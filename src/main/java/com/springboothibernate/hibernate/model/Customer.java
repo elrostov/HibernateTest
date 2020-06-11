@@ -16,6 +16,14 @@ import java.util.Set;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @IdClass(CustomerId.class)
 //@BatchSize(size = 4)
+@NamedEntityGraph(
+        name = "customers",
+        attributeNodes = {
+                @NamedAttributeNode("name"),
+                @NamedAttributeNode("address"),
+                @NamedAttributeNode("orderItems"),
+        }
+)
 public class Customer {
 
     @Id
@@ -30,7 +38,7 @@ public class Customer {
     @OneToMany(
             mappedBy = "customer",
             cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-//    @Fetch(FetchMode.SUBSELECT)
+//    @Fetch(FetchMode.SELECT)
     private List<OrderItem> orderItems = new ArrayList<>();
 
 //    @ElementCollection(fetch = FetchType.LAZY)

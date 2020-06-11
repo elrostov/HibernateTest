@@ -6,6 +6,8 @@ import com.springboothibernate.hibernate.dao.abstraction.OrderItemDao;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityGraph;
+import java.util.HashMap;
 import java.util.List;
 
 @Repository
@@ -28,8 +30,12 @@ public class OrderItemDaoImpl extends AbstractDao<Long, OrderItem> implements Or
     public void getAllCustomersAndTheirOrders() {
         System.out.println("********************************************");
         System.out.println("getting all customers...");
+        EntityGraph<?> entityGraph = em.getEntityGraph("customers");
+//        HashMap<String, Object> properties = new HashMap<>();
+//        properties.put("javax.persistence.fetchgraph", entityGraph);
+
         List<Customer> customers = em.createQuery("SELECT c FROM Customer c", Customer.class)
-                .getResultList();
+                .setHint("javax.persistence.fetchgraph", entityGraph).getResultList();
         customers.forEach(System.out::println);
 
         System.out.println("********************************************");
