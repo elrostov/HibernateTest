@@ -39,8 +39,18 @@ public class TestDataInit {
 //        customer2.addOrderItem("Ram", 5);
 //        customer2.addOrderItem("Corei7", 1);
 
+        Customer customer3 = new Customer();
+        customer3.setName("Heather Barton");
+        customer3.setAddress("563 Holbein Square, Woodbine");
+
+        Customer customer4 = new Customer();
+        customer4.setName("Buba");
+        customer4.setAddress("---fwbjwejhbvc");
+
         customerService.add(customer1);
         customerService.add(customer2);
+        customerService.add(customer3);
+        customerService.add(customer4);
 
 //        customerService.delete(customer1);
 //        customerService.delete(customer2);
@@ -69,37 +79,39 @@ public class TestDataInit {
         orderItem4.setItemName("SK Monitor");
         orderItem4.setQuantity(3);
 
+        orderItem1.setCustomer(customer1);
+        orderItem2.setCustomer(customer2);
+        orderItem3.setCustomer(customer3);
+        orderItem4.setCustomer(customer4);
+
         orderItemService.add(orderItem1);
         orderItemService.add(orderItem2);
         orderItemService.add(orderItem3);
         orderItemService.add(orderItem4);
 
-//        Customer customer = new Customer();
-//        customer.setName("Heather Barton");
-//        customer.setAddress("563 Holbein Square, Woodbine");
 
         System.out.println("##################################################################################");
         System.out.println("-- Setting OrderItems to Customer 1 --");
-        customer1.addOrderItem(orderItem1);
-        customer1.addOrderItem(orderItem2);
-        customer1.addOrderItem(orderItem3);
-        customer1.addOrderItem(orderItem4);
+//        customer1.addOrderItem(orderItem1);
+//        customer1.addOrderItem(orderItem2);
+//        customer1.addOrderItem(orderItem3);
+//        customer1.addOrderItem(orderItem4);
 
         customerService.update(customer1);
 
         System.out.println("##################################################################################");
         System.out.println("-- Loading Customer --");
-        List<Customer> customers = customerService.getAll();
+//        List<Customer> customers = customerService.getAll();
 //        customers.forEach(System.out::println);
 
         System.out.println("##################################################################################");
         System.out.println("-- Loading OrderItem --");
         List<OrderItem> orderItems = orderItemService.getAll();
-//        orderItems.forEach(System.out::println);
+        orderItems.forEach(System.out::println);
 
         System.out.println("##################################################################################");
         System.out.println("-- Deleting OrderItem entity --");
 
-        orderItemService.delete(orderItem1);
+//        orderItemService.delete(orderItem1);
     }
 }

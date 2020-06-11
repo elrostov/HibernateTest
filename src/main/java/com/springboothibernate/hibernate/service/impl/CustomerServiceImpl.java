@@ -5,6 +5,7 @@ import com.springboothibernate.hibernate.model.CustomerId;
 import com.springboothibernate.hibernate.service.abstraction.CustomerService;
 import com.springboothibernate.hibernate.dao.abstraction.CustomerDao;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

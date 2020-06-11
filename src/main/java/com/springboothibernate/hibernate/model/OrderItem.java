@@ -1,5 +1,9 @@
 package com.springboothibernate.hibernate.model;
 
+import org.hibernate.FetchMode;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,8 +17,9 @@ public class OrderItem {
     private int quantity;
 
     @ManyToOne
-            (cascade={CascadeType.REMOVE, CascadeType.PERSIST})
+            (cascade={CascadeType.MERGE}/*, fetch = FetchType.LAZY*/)
 //    @JoinColumn
+    @BatchSize(size = 4)
     private Customer customer;
 
     public Long getId() {

@@ -4,6 +4,7 @@ import com.springboothibernate.hibernate.dao.abstraction.OrderItemDao;
 import com.springboothibernate.hibernate.model.OrderItem;
 import com.springboothibernate.hibernate.service.abstraction.OrderItemService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

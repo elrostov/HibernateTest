@@ -1,6 +1,8 @@
 package com.springboothibernate.hibernate.model;
 
+import org.hibernate.FetchMode;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -31,17 +33,17 @@ public class Customer {
     @ElementCollection(fetch = FetchType.LAZY)
     private Set<String> strings = new HashSet<>();
 
-    public void addOrderItem(String itemName, int qty) {
-        OrderItem orderItem = new OrderItem();
-        orderItem.setItemName(itemName);
-        orderItem.setQuantity(qty);
-        addOrderItem(orderItem);
-    }
-
-    public void addOrderItem(OrderItem orderItem) {
-        orderItem.setCustomer(this);
-        this.orderItems.add(orderItem);
-    }
+//    public void addOrderItem(String itemName, int qty) {
+//        OrderItem orderItem = new OrderItem();
+//        orderItem.setItemName(itemName);
+//        orderItem.setQuantity(qty);
+//        addOrderItem(orderItem);
+//    }
+//
+//    public void addOrderItem(OrderItem orderItem) {
+//        orderItem.setCustomer(this);
+//        this.orderItems.add(orderItem);
+//    }
 
     public Set<String> getStrings() {
         return strings;

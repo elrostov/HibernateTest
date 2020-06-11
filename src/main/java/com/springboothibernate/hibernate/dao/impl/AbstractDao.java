@@ -1,5 +1,6 @@
 package com.springboothibernate.hibernate.dao.impl;
 
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -8,7 +9,7 @@ import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.util.List;
 
-@Transactional(readOnly = true)
+@Transactional/*(propagation = Propagation.MANDATORY)*/
 public abstract class AbstractDao<PK extends Serializable, T> {
 
     @PersistenceContext
