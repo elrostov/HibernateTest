@@ -13,4 +13,5 @@ public interface OrderItemService {
     List<OrderItem> getAll();
     void detach(OrderItem orderItem);
     OrderItem getProxy(Class<OrderItem> entityClass, Long id);
+    void getAllCustomersAndTheirOrders();
 }

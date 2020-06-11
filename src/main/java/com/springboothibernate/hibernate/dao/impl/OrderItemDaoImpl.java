@@ -1,8 +1,10 @@
 package com.springboothibernate.hibernate.dao.impl;
 
+import com.springboothibernate.hibernate.model.Customer;
 import com.springboothibernate.hibernate.model.OrderItem;
 import com.springboothibernate.hibernate.dao.abstraction.OrderItemDao;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,4 +22,22 @@ public class OrderItemDaoImpl extends AbstractDao<Long, OrderItem> implements Or
 //                OrderItem.class)
 //                .getResultList();
 //    }
+
+    @Override
+//    @Transactional
+    public void getAllCustomersAndTheirOrders() {
+        System.out.println("********************************************");
+        System.out.println("getting all customers...");
+        List<Customer> customers = em.createQuery("SELECT c FROM Customer c", Customer.class)
+                .getResultList();
+        customers.forEach(System.out::println);
+
+        System.out.println("********************************************");
+        System.out.println("accessing their ItemOrders...");
+
+        for (Customer customer : customers) {
+            customer.getOrderItems().forEach(System.out::println);
+        }
+
+    }
 }

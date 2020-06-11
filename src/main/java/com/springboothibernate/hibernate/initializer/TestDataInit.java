@@ -102,14 +102,10 @@ public class TestDataInit {
 
         System.out.println("##################################################################################");
         System.out.println("-- Loading Customer --");
-        List<Customer> customers = customerService.getAll();
-        customers.forEach(System.out::println);
+        orderItemService.getAllCustomersAndTheirOrders();
 
-        for (Customer customer : customers) {
-            customer.getOrderItems().forEach(System.out::println);
-        }
 
-        System.out.println("##################################################################################");
+/*        System.out.println("##################################################################################");
         System.out.println("-- Loading OrderItem --");
         List<OrderItem> orderItems = orderItemService.getAll();
         orderItems.forEach(System.out::println);
@@ -123,7 +119,7 @@ public class TestDataInit {
 
 
         System.out.println("##################################################################################");
-        System.out.println("-- Deleting OrderItem entity --");
+        System.out.println("-- Deleting OrderItem entity --");*/
 
 //        orderItemService.delete(orderItem1);
     }

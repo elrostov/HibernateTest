@@ -58,4 +58,10 @@ public class OrderItemServiceImpl implements OrderItemService {
     public OrderItem getProxy(Class<OrderItem> entityClass, Long id) {
         return orderItemDao.getProxy(entityClass, id);
     }
+
+    @Override
+    public void getAllCustomersAndTheirOrders() {
+        orderItemDao.getAllCustomersAndTheirOrders();
+    }
+
 }
