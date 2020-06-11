@@ -103,6 +103,7 @@ public class TestDataInit {
         System.out.println("##################################################################################");
         System.out.println("-- Loading Customer --");
         orderItemService.getAllCustomersAndTheirOrders();
+        orderItemService.getAllCustomersAndTheirOrdersWithJoinFetch();
 
 
 /*        System.out.println("##################################################################################");

@@ -44,6 +44,23 @@ public class OrderItemDaoImpl extends AbstractDao<Long, OrderItem> implements Or
         for (Customer customer : customers) {
             customer.getOrderItems().forEach(System.out::println);
         }
+    }
 
+    @Override
+//    @Transactional
+    public void getAllCustomersAndTheirOrdersWithJoinFetch() {
+        System.out.println("********************************************");
+        System.out.println("getting all customers with JOIN FETCH...");
+
+        List<Customer> customers = em.createQuery("SELECT c FROM Customer c LEFT JOIN FETCH c.orderItems", Customer.class)
+                .getResultList();
+        customers.forEach(System.out::println);
+
+        System.out.println("********************************************");
+        System.out.println("accessing their ItemOrders...");
+
+        for (Customer customer : customers) {
+            customer.getOrderItems().forEach(System.out::println);
+        }
     }
 }
