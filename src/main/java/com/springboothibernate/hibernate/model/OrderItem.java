@@ -13,7 +13,7 @@ public class OrderItem {
     private int quantity;
 
     @ManyToOne
-//            (cascade={CascadeType.REMOVE, CascadeType.PERSIST})
+            (cascade={CascadeType.REMOVE, CascadeType.PERSIST})
 //    @JoinColumn
     private Customer customer;
 
@@ -41,12 +41,12 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-//
-//    public void setCustomer(Customer customer) {
-//        this.customer = customer;
-//    }
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }
 

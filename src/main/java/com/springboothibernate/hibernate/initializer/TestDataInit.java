@@ -24,19 +24,20 @@ public class TestDataInit {
 
     @Transactional
     void init() throws Exception {
+        System.out.println("##################################################################################");
         System.out.println("-- Persisting Customer entity --");
 
         Customer customer1 = new Customer();
         customer1.setName("Maria Dorsey");
         customer1.setAddress("1719 Shumaker Boulevard, Sylvania");
-        customer1.addOrderItem("GEN SSD", 2);
-        customer1.addOrderItem("SK Monitor", 3);
+//        customer1.addOrderItem("GEN SSD", 2);
+//        customer1.addOrderItem("SK Monitor", 3);
 
         Customer customer2 = new Customer();
         customer2.setName("El Su");
         customer2.setAddress("1234 Nord, RnD");
-        customer2.addOrderItem("Ram", 5);
-        customer2.addOrderItem("Corei7", 1);
+//        customer2.addOrderItem("Ram", 5);
+//        customer2.addOrderItem("Corei7", 1);
 
         customerService.add(customer1);
         customerService.add(customer2);
@@ -47,8 +48,9 @@ public class TestDataInit {
 //        customerService.add(customer1);
 //        customerService.add(customer2);
 
-        customerService.getProxy((Class<Customer>) customer1.getClass(), new CustomerId(customer1.getId(), customer1.getName()));
+//        customerService.getProxy((Class<Customer>) customer1.getClass(), new CustomerId(customer1.getId(), customer1.getName()));
 
+        System.out.println("##################################################################################");
         System.out.println("-- Persisting OrderItem entity --");
 
         OrderItem orderItem1 = new OrderItem();
@@ -59,23 +61,43 @@ public class TestDataInit {
         orderItem2.setItemName("AXCVXV USB Drive");
         orderItem2.setQuantity(7);
 
-        Customer customer = new Customer();
-        customer.setName("Heather Barton");
-        customer.setAddress("563 Holbein Square, Woodbine");
-        customer.addOrderItem(orderItem1);
-        customer.addOrderItem(orderItem2);
+        OrderItem orderItem3 = new OrderItem();
+        orderItem3.setItemName("GEN SSD");
+        orderItem3.setQuantity(2);
+
+        OrderItem orderItem4 = new OrderItem();
+        orderItem4.setItemName("SK Monitor");
+        orderItem4.setQuantity(3);
 
         orderItemService.add(orderItem1);
-//        orderItemService.add(orderItem2);
+        orderItemService.add(orderItem2);
+        orderItemService.add(orderItem3);
+        orderItemService.add(orderItem4);
 
+//        Customer customer = new Customer();
+//        customer.setName("Heather Barton");
+//        customer.setAddress("563 Holbein Square, Woodbine");
+
+        System.out.println("##################################################################################");
+        System.out.println("-- Setting OrderItems to Customer 1 --");
+        customer1.addOrderItem(orderItem1);
+        customer1.addOrderItem(orderItem2);
+        customer1.addOrderItem(orderItem3);
+        customer1.addOrderItem(orderItem4);
+
+        customerService.update(customer1);
+
+        System.out.println("##################################################################################");
         System.out.println("-- Loading Customer --");
         List<Customer> customers = customerService.getAll();
 //        customers.forEach(System.out::println);
 
+        System.out.println("##################################################################################");
         System.out.println("-- Loading OrderItem --");
         List<OrderItem> orderItems = orderItemService.getAll();
 //        orderItems.forEach(System.out::println);
 
+        System.out.println("##################################################################################");
         System.out.println("-- Deleting OrderItem entity --");
 
         orderItemService.delete(orderItem1);

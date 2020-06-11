@@ -39,7 +39,7 @@ public class Customer {
     }
 
     public void addOrderItem(OrderItem orderItem) {
-//        orderItem.setCustomer(this);
+        orderItem.setCustomer(this);
         this.orderItems.add(orderItem);
     }
 
