@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+import org.w3c.dom.ls.LSOutput;
 
 import java.util.List;
 
@@ -80,9 +81,9 @@ public class TestDataInit {
         orderItem4.setQuantity(3);
 
         orderItem1.setCustomer(customer1);
-        orderItem2.setCustomer(customer2);
-        orderItem3.setCustomer(customer3);
-        orderItem4.setCustomer(customer4);
+        orderItem2.setCustomer(customer1);
+        orderItem3.setCustomer(customer2);
+//        orderItem4.setCustomer(customer4);
 
         orderItemService.add(orderItem1);
         orderItemService.add(orderItem2);
@@ -101,8 +102,12 @@ public class TestDataInit {
 
         System.out.println("##################################################################################");
         System.out.println("-- Loading Customer --");
-//        List<Customer> customers = customerService.getAll();
-//        customers.forEach(System.out::println);
+        List<Customer> customers = customerService.getAll();
+        customers.forEach(System.out::println);
+
+        for (Customer customer : customers) {
+            customer.getOrderItems().forEach(System.out::println);
+        }
 
         System.out.println("##################################################################################");
         System.out.println("-- Loading OrderItem --");
@@ -110,7 +115,10 @@ public class TestDataInit {
         orderItems.forEach(System.out::println);
 
         for (OrderItem orderItem : orderItems) {
-            System.out.println(orderItem.getCustomer().getName());
+            Customer customer = orderItem.getCustomer();
+            if (customer != null) {
+                System.out.println(customer.getName());
+            }
         }
 
 

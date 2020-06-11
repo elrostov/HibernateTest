@@ -1,9 +1,9 @@
 package com.springboothibernate.hibernate.model;
 
-import org.hibernate.FetchMode;
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.Set;
 @Cacheable(value = false)
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @IdClass(CustomerId.class)
-@BatchSize(size = 4)
+//@BatchSize(size = 4)
 public class Customer {
 
     @Id
@@ -29,11 +29,12 @@ public class Customer {
 
     @OneToMany(
             mappedBy = "customer",
-            cascade=CascadeType.ALL)
+            cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @ElementCollection(fetch = FetchType.LAZY)
-    private Set<String> strings = new HashSet<>();
+//    @ElementCollection(fetch = FetchType.LAZY)
+//    private Set<String> strings = new HashSet<>();
 
 //    public void addOrderItem(String itemName, int qty) {
 //        OrderItem orderItem = new OrderItem();
@@ -47,13 +48,13 @@ public class Customer {
 //        this.orderItems.add(orderItem);
 //    }
 
-    public Set<String> getStrings() {
-        return strings;
-    }
-
-    public void setStrings(Set<String> strings) {
-        this.strings = strings;
-    }
+//    public Set<String> getStrings() {
+//        return strings;
+//    }
+//
+//    public void setStrings(Set<String> strings) {
+//        this.strings = strings;
+//    }
 
     public Long getId() {
         return id;
@@ -98,7 +99,6 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", orderItems=" + orderItems +
-                ", strings=" + strings +
                 '}';
     }
 }
