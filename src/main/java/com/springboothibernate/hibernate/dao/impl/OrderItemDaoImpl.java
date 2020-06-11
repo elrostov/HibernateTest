@@ -13,11 +13,11 @@ public class OrderItemDaoImpl extends AbstractDao<Long, OrderItem> implements Or
         super(OrderItem.class);
     }
 
-    @Override
-    public List<OrderItem> getAll() {
-        return em.createQuery(
-                "SELECT o FROM OrderItem o JOIN FETCH  o.customer ",
-                OrderItem.class)
-                .getResultList();
-    }
+//    @Override
+//    public List<OrderItem> getAll() {
+//        return em.createQuery(
+//                "SELECT o FROM OrderItem o JOIN FETCH  o.customer ",
+//                OrderItem.class)
+//                .getResultList();
+//    }
 }

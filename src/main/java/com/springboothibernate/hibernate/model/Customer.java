@@ -1,6 +1,7 @@
 package com.springboothibernate.hibernate.model;
 
 import org.hibernate.FetchMode;
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 
@@ -14,6 +15,7 @@ import java.util.Set;
 @Cacheable(value = false)
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @IdClass(CustomerId.class)
+@BatchSize(size = 4)
 public class Customer {
 
     @Id

@@ -19,7 +19,6 @@ public class OrderItem {
     @ManyToOne
             (cascade={CascadeType.MERGE}/*, fetch = FetchType.LAZY*/)
 //    @JoinColumn
-    @BatchSize(size = 4)
     private Customer customer;
 
     public Long getId() {

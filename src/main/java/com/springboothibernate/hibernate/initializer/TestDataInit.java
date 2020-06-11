@@ -109,6 +109,11 @@ public class TestDataInit {
         List<OrderItem> orderItems = orderItemService.getAll();
         orderItems.forEach(System.out::println);
 
+        for (OrderItem orderItem : orderItems) {
+            System.out.println(orderItem.getCustomer().getName());
+        }
+
+
         System.out.println("##################################################################################");
         System.out.println("-- Deleting OrderItem entity --");
 
