@@ -1,7 +1,7 @@
 package com.springboothibernate.hibernate.service.abstraction;
 
-import com.springboothibernate.hibernate.model.Customer;
-import com.springboothibernate.hibernate.model.CustomerId;
+import com.springboothibernate.hibernate.model.compositeKey.Customer;
+import com.springboothibernate.hibernate.model.compositeKey.CustomerId;
 
 import java.util.List;
 
@@ -13,4 +13,5 @@ public interface CustomerService {
     List<Customer> getAll();
     void detach(Customer customer);
     Customer getProxy(Class<Customer> entityClass, CustomerId id);
+    List<Customer> getAllWithJoinFetch();
 }

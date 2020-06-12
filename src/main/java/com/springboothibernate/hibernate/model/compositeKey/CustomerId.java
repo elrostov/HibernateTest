@@ -1,4 +1,4 @@
-package com.springboothibernate.hibernate.model;
+package com.springboothibernate.hibernate.model.compositeKey;
 
 import java.io.Serializable;
 import java.util.Objects;

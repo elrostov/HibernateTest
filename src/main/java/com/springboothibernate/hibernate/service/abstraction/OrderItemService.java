@@ -1,6 +1,6 @@
 package com.springboothibernate.hibernate.service.abstraction;
 
-import com.springboothibernate.hibernate.model.OrderItem;
+import com.springboothibernate.hibernate.model.compositeKey.OrderItem;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ public interface OrderItemService {
     List<OrderItem> getAll();
     void detach(OrderItem orderItem);
     OrderItem getProxy(Class<OrderItem> entityClass, Long id);
+    List<OrderItem> getAllWithJoinFetch();
     void getAllCustomersAndTheirOrders();
     void getAllCustomersAndTheirOrdersWithJoinFetch();
 }

@@ -1,11 +1,10 @@
 package com.springboothibernate.hibernate.service.impl;
 
-import com.springboothibernate.hibernate.model.Customer;
-import com.springboothibernate.hibernate.model.CustomerId;
+import com.springboothibernate.hibernate.model.compositeKey.Customer;
+import com.springboothibernate.hibernate.model.compositeKey.CustomerId;
 import com.springboothibernate.hibernate.service.abstraction.CustomerService;
 import com.springboothibernate.hibernate.dao.abstraction.CustomerDao;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -53,5 +52,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer getProxy(Class<Customer> entityClass, CustomerId id) {
         return customerDao.getProxy(entityClass, id);
+    }
+
+    @Override
+    public List<Customer> getAllWithJoinFetch() {
+        return customerDao.getAllWithJoinFetch();
     }
 }

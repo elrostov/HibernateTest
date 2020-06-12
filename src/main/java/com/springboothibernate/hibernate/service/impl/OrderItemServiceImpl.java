@@ -1,10 +1,9 @@
 package com.springboothibernate.hibernate.service.impl;
 
 import com.springboothibernate.hibernate.dao.abstraction.OrderItemDao;
-import com.springboothibernate.hibernate.model.OrderItem;
+import com.springboothibernate.hibernate.model.compositeKey.OrderItem;
 import com.springboothibernate.hibernate.service.abstraction.OrderItemService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -59,6 +58,10 @@ public class OrderItemServiceImpl implements OrderItemService {
         return orderItemDao.getProxy(entityClass, id);
     }
 
+    @Override
+    public List<OrderItem> getAllWithJoinFetch() {
+        return orderItemDao.getAllWithJoinFetch();
+    }
     @Override
     public void getAllCustomersAndTheirOrders() {
         orderItemDao.getAllCustomersAndTheirOrders();

@@ -1,13 +1,11 @@
 package com.springboothibernate.hibernate.dao.impl;
 
-import com.springboothibernate.hibernate.model.Customer;
-import com.springboothibernate.hibernate.model.OrderItem;
+import com.springboothibernate.hibernate.model.compositeKey.Customer;
+import com.springboothibernate.hibernate.model.compositeKey.OrderItem;
 import com.springboothibernate.hibernate.dao.abstraction.OrderItemDao;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityGraph;
-import java.util.HashMap;
 import java.util.List;
 
 @Repository
@@ -17,13 +15,13 @@ public class OrderItemDaoImpl extends AbstractDao<Long, OrderItem> implements Or
         super(OrderItem.class);
     }
 
-//    @Override
-//    public List<OrderItem> getAll() {
-//        return em.createQuery(
-//                "SELECT o FROM OrderItem o JOIN FETCH  o.customer ",
-//                OrderItem.class)
-//                .getResultList();
-//    }
+    @Override
+    public List<OrderItem> getAllWithJoinFetch() {
+        return em.createQuery(
+                "SELECT o FROM OrderItem o JOIN FETCH  o.customer ",
+                OrderItem.class)
+                .getResultList();
+    }
 
     @Override
 //    @Transactional
