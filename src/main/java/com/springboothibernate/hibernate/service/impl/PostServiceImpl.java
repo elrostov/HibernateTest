@@ -52,4 +52,9 @@ public class PostServiceImpl implements PostService {
     public Post getProxy(Class<Post> entityClass, Long id) {
         return postDao.getProxy(entityClass, id);
     }
+
+    @Override
+    public List<Post> getAllWithJoinFetch() {
+        return postDao.getAllWithJoinFetch();
+    }
 }

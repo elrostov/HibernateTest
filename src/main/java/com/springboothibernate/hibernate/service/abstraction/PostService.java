@@ -12,4 +12,5 @@ public interface PostService {
     List<Post> getAll();
     void detach(Post post);
     Post getProxy(Class<Post> entityClass, Long id);
+    List<Post> getAllWithJoinFetch();
 }

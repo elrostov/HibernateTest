@@ -2,6 +2,7 @@ package com.springboothibernate.hibernate.service.abstraction;
 
 import com.springboothibernate.hibernate.model.Post;
 import com.springboothibernate.hibernate.model.PostComment;
+import com.springboothibernate.hibernate.model.compositeKey.Customer;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ public interface PostCommentService {
     List<PostComment> getAll();
     void detach(PostComment postComment);
     PostComment getProxy(Class<PostComment> entityClass, Long id);
+    List<PostComment> getAllWithJoinFetch();
 }

@@ -52,4 +52,9 @@ public class PostCommentServiceImpl implements PostCommentService {
     public PostComment getProxy(Class<PostComment> entityClass, Long id) {
         return postCommentDao.getProxy(entityClass, id);
     }
+
+    @Override
+    public List<PostComment> getAllWithJoinFetch() {
+        return postCommentDao.getAllWithJoinFetch();
+    }
 }

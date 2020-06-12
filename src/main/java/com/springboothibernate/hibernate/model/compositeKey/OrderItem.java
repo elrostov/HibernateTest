@@ -55,7 +55,7 @@ public class OrderItem {
                 "id=" + id +
                 ", itemName='" + itemName + '\'' +
                 ", quantity=" + quantity +
-                ", customer=" + customer +
+                ", customer=" + customer.getName() +
                 '}';
     }
 }
