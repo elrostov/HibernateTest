@@ -36,8 +36,10 @@ public class Customer {
     private String address;
 
     @OneToMany(
-            mappedBy = "customer",
-            cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+            mappedBy = "customer"
+            , cascade=CascadeType.ALL
+//            , fetch = FetchType.LAZY
+    )
 //    @Fetch(FetchMode.SELECT)
     private List<OrderItem> orderItems = new ArrayList<>();
 

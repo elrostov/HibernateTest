@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface OrderItemDao extends GenericDao<Long, OrderItem> {
 
+    @Override
     List<OrderItem> getAll();
     //    @Transactional
     void getAllCustomersAndTheirOrders();
