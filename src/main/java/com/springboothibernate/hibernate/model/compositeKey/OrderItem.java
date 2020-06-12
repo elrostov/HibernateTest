@@ -48,5 +48,15 @@ public class OrderItem {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "id=" + id +
+                ", itemName='" + itemName + '\'' +
+                ", quantity=" + quantity +
+                ", customer=" + customer +
+                '}';
+    }
 }
 

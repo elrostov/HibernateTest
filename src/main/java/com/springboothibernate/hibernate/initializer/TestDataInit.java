@@ -110,8 +110,8 @@ public class TestDataInit {
         System.out.println("-- Loading Customer --");
         List<Customer> customers = customerService.getAllWithJoinFetch();
         customers.forEach(System.out::println);
-//        orderItemService.getAllCustomersAndTheirOrders();
-//        orderItemService.getAllCustomersAndTheirOrdersWithJoinFetch();
+        orderItemService.getAllCustomersAndTheirOrdersWithEntityGraph();
+        orderItemService.getAllCustomersAndTheirOrdersWithLeftJoinFetch();
 
 
         System.out.println("##################################################################################");

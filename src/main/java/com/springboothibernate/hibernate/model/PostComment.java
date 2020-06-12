@@ -43,4 +43,13 @@ public class PostComment {
     public void setReview(String review) {
         this.review = review;
     }
+
+    @Override
+    public String toString() {
+        return "PostComment{" +
+                "id=" + id +
+                ", post=" + post +
+                ", review='" + review + '\'' +
+                '}';
+    }
 }

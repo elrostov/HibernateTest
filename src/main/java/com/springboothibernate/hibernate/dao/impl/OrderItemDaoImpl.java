@@ -25,9 +25,9 @@ public class OrderItemDaoImpl extends AbstractDao<Long, OrderItem> implements Or
 
     @Override
 //    @Transactional
-    public void getAllCustomersAndTheirOrders() {
-        System.out.println("********************************************");
-        System.out.println("getting all customers...");
+    public void getAllCustomersAndTheirOrdersWithEntityGraph() {
+        System.out.println("\n********************************************");
+        System.out.println("Getting all customers with EntityGraph - fetchgraph\n");
         EntityGraph<?> entityGraph = em.getEntityGraph("customers");
 //        HashMap<String, Object> properties = new HashMap<>();
 //        properties.put("javax.persistence.fetchgraph", entityGraph);
@@ -36,8 +36,8 @@ public class OrderItemDaoImpl extends AbstractDao<Long, OrderItem> implements Or
                 .setHint("javax.persistence.fetchgraph", entityGraph).getResultList();
         customers.forEach(System.out::println);
 
-        System.out.println("********************************************");
-        System.out.println("accessing their ItemOrders...");
+        System.out.println("\n********************************************");
+        System.out.println("Accessing their ItemOrders...\n");
 
         for (Customer customer : customers) {
             customer.getOrderItems().forEach(System.out::println);
@@ -46,16 +46,16 @@ public class OrderItemDaoImpl extends AbstractDao<Long, OrderItem> implements Or
 
     @Override
 //    @Transactional
-    public void getAllCustomersAndTheirOrdersWithJoinFetch() {
-        System.out.println("********************************************");
-        System.out.println("getting all customers with JOIN FETCH...");
+    public void getAllCustomersAndTheirOrdersWithLeftJoinFetch() {
+        System.out.println("\n********************************************");
+        System.out.println("Getting all customers with LEFT JOIN FETCH...\n");
 
         List<Customer> customers = em.createQuery("SELECT c FROM Customer c LEFT JOIN FETCH c.orderItems", Customer.class)
                 .getResultList();
         customers.forEach(System.out::println);
 
-        System.out.println("********************************************");
-        System.out.println("accessing their ItemOrders...");
+        System.out.println("\n********************************************");
+        System.out.println("Accessing their ItemOrders...\n");
 
         for (Customer customer : customers) {
             customer.getOrderItems().forEach(System.out::println);
