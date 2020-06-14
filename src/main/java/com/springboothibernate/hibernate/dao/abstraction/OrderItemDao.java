@@ -11,4 +11,5 @@ public interface OrderItemDao extends GenericDao<Long, OrderItem> {
     void getAllCustomersAndTheirOrders();
     //    @Transactional
     void getAllCustomersAndTheirOrdersWithJoinFetch();
+    void getOne();
 }

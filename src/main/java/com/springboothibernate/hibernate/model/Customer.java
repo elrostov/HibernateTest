@@ -37,7 +37,7 @@ public class Customer {
 
     @OneToMany(
             mappedBy = "customer",
-            cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+            cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 //    @Fetch(FetchMode.SELECT)
     private List<OrderItem> orderItems = new ArrayList<>();
 

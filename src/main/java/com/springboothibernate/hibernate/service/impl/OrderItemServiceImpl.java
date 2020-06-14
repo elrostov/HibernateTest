@@ -69,4 +69,8 @@ public class OrderItemServiceImpl implements OrderItemService {
         orderItemDao.getAllCustomersAndTheirOrdersWithJoinFetch();
     }
 
+    @Override
+    public void getOne() {
+        orderItemDao.getOne();
+    }
 }

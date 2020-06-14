@@ -15,4 +15,5 @@ public interface OrderItemService {
     OrderItem getProxy(Class<OrderItem> entityClass, Long id);
     void getAllCustomersAndTheirOrders();
     void getAllCustomersAndTheirOrdersWithJoinFetch();
+    void getOne();
 }
