@@ -55,7 +55,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> getAllWithJoinFetch() {
-        return customerDao.getAllWithJoinFetch();
+    public void getAllWithJoinFetch() {
+        customerDao.getAllWithJoinFetch();
+    }
+
+    @Override
+    public void getAllWithLeftJoinFetch() {
+
+    }
+
+    @Override
+    public void getAllWithEntityGraph() {
+
     }
 }

@@ -1,9 +1,12 @@
 package com.springboothibernate.hibernate.dao.impl;
 
+import com.springboothibernate.hibernate.model.compositeKey.embeddable.EmbeddableClassA;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.w3c.dom.ls.LSOutput;
 
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.io.Serializable;
@@ -46,6 +49,7 @@ public abstract class AbstractDao<PK extends Serializable, T> {
 
     public void deleteEntity(T entity) {
         em.remove(em.contains(entity) ? entity : em.merge(entity));
+//        em.remove(entity);
         System.out.println(entity);
     }
 
@@ -78,7 +82,9 @@ public abstract class AbstractDao<PK extends Serializable, T> {
         genericClassName = genericClassName.substring(genericClassName.lastIndexOf('.') + 1);
         String hql = "FROM " + genericClassName;
         TypedQuery<T> query = em.createQuery(hql, persistentClass);
-        return query.getResultList();
+        List<T> list = query.getResultList();
+        list.forEach(System.out::println);
+        return list;
     }
 
     public List<T> getAllApproved() {

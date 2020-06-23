@@ -54,7 +54,17 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<Post> getAllWithJoinFetch() {
-        return postDao.getAllWithJoinFetch();
+    public void getAllWithJoinFetch() {
+        postDao.getAllWithJoinFetch();
+    }
+
+    @Override
+    public void getAllWithLeftJoinFetch() {
+
+    }
+
+    @Override
+    public void getAllWithEntityGraph() {
+
     }
 }

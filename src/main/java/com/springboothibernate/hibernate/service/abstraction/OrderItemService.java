@@ -13,7 +13,7 @@ public interface OrderItemService {
     List<OrderItem> getAll();
     void detach(OrderItem orderItem);
     OrderItem getProxy(Class<OrderItem> entityClass, Long id);
-    List<OrderItem> getAllWithJoinFetch();
-    void getAllCustomersAndTheirOrdersWithEntityGraph();
-    void getAllCustomersAndTheirOrdersWithLeftJoinFetch();
+    void getAllWithJoinFetch();
+    void getAllWithLeftJoinFetch();
+    void getAllWithEntityGraph();
 }

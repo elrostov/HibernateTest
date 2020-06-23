@@ -54,7 +54,17 @@ public class PostCommentServiceImpl implements PostCommentService {
     }
 
     @Override
-    public List<PostComment> getAllWithJoinFetch() {
-        return postCommentDao.getAllWithJoinFetch();
+    public void getAllWithJoinFetch() {
+        postCommentDao.getAllWithJoinFetch();
+    }
+
+    @Override
+    public void getAllWithLeftJoinFetch() {
+
+    }
+
+    @Override
+    public void getAllWithEntityGraph() {
+
     }
 }

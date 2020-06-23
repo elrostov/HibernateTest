@@ -16,11 +16,21 @@ public class OrderItemDaoImpl extends AbstractDao<Long, OrderItem> implements Or
     }
 
     @Override
-    public List<OrderItem> getAllWithJoinFetch() {
-        return em.createQuery(
+    public void getAllWithJoinFetch() {
+        em.createQuery(
                 "SELECT o FROM OrderItem o JOIN FETCH  o.customer ",
                 OrderItem.class)
                 .getResultList();
+    }
+
+    @Override
+    public void getAllWithLeftJoinFetch() {
+
+    }
+
+    @Override
+    public void getAllWithEntityGraph() {
+
     }
 
     @Override

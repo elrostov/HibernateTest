@@ -1,11 +1,13 @@
 package com.springboothibernate.hibernate.model.compositeKey;
 
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.*;
 
 @Entity
 public class OrderItem {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String itemName;
@@ -55,7 +57,7 @@ public class OrderItem {
                 "id=" + id +
                 ", itemName='" + itemName + '\'' +
                 ", quantity=" + quantity +
-                ", customer=" + customer.getName() +
+                ", customer=" + customer +
                 '}';
     }
 }

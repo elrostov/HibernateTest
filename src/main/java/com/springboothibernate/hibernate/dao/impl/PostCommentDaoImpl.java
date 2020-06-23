@@ -14,10 +14,20 @@ public class PostCommentDaoImpl extends AbstractDao<Long, PostComment> implement
     }
 
     @Override
-    public List<PostComment> getAllWithJoinFetch() {
-        return em.createQuery(
+    public void getAllWithJoinFetch() {
+        em.createQuery(
                 "SELECT pc FROM PostComment pc JOIN FETCH  pc.post ",
                 PostComment.class)
                 .getResultList();
+    }
+
+    @Override
+    public void getAllWithLeftJoinFetch() {
+
+    }
+
+    @Override
+    public void getAllWithEntityGraph() {
+
     }
 }

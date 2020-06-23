@@ -14,7 +14,17 @@ public class PostDaoImpl extends AbstractDao<Long, Post> implements PostDao {
     }
 
     @Override
-    public List<Post> getAllWithJoinFetch() {
-        return getAll();
+    public void getAllWithJoinFetch() {
+
+    }
+
+    @Override
+    public void getAllWithLeftJoinFetch() {
+
+    }
+
+    @Override
+    public void getAllWithEntityGraph() {
+
     }
 }

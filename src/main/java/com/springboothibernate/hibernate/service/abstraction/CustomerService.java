@@ -13,5 +13,7 @@ public interface CustomerService {
     List<Customer> getAll();
     void detach(Customer customer);
     Customer getProxy(Class<Customer> entityClass, CustomerId id);
-    List<Customer> getAllWithJoinFetch();
+    void getAllWithJoinFetch();
+    void getAllWithLeftJoinFetch();
+    void getAllWithEntityGraph();
 }

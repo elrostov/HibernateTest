@@ -1,6 +1,7 @@
 package com.springboothibernate.hibernate.service.abstraction;
 
 import com.springboothibernate.hibernate.model.Post;
+import com.springboothibernate.hibernate.model.compositeKey.Customer;
 
 import java.util.List;
 
@@ -12,5 +13,7 @@ public interface PostService {
     List<Post> getAll();
     void detach(Post post);
     Post getProxy(Class<Post> entityClass, Long id);
-    List<Post> getAllWithJoinFetch();
+    void getAllWithJoinFetch();
+    void getAllWithLeftJoinFetch();
+    void getAllWithEntityGraph();
 }

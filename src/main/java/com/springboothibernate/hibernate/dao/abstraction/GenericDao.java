@@ -30,5 +30,9 @@ public interface GenericDao<PK extends Serializable, T> {
 
     T getProxy(Class<T> entityClass, PK id);
 
-    List<T> getAllWithJoinFetch();
+    void getAllWithJoinFetch();
+
+    void getAllWithLeftJoinFetch();
+
+    void getAllWithEntityGraph();
 }

@@ -1,42 +1,55 @@
 package com.springboothibernate.hibernate.model.compositeKey;
 
+import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.lang.Nullable;
 
+import javax.annotation.Resource;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Cacheable(value = false)
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//@Cacheable(value = false)
+//@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @IdClass(CustomerId.class)
 //@BatchSize(size = 4)
-@NamedEntityGraph(
-        name = "customers",
-        attributeNodes = {
-                @NamedAttributeNode("name"),
-                @NamedAttributeNode("address"),
-                @NamedAttributeNode("orderItems"),
-        }
-)
+//@NamedEntityGraph(
+//        name = "customers",
+//        attributeNodes = {
+//                @NamedAttributeNode("name"),
+//                @NamedAttributeNode("address"),
+//                @NamedAttributeNode("orderItems"),
+//        }
+//)
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Id
     private String name;
 
+//    @Basic(optional = false)
+//    @Resource
     private String address;
+
+//    @Basic(optional = false)
+    private int num;
 
     @OneToMany(
             mappedBy = "customer"
             , cascade=CascadeType.ALL
 //            , fetch = FetchType.LAZY
     )
-//    @Fetch(FetchMode.SELECT)
+//    @Fetch(FetchMode.SUBSELECT)
+//    @BatchSize(size = 2)
     private List<OrderItem> orderItems = new ArrayList<>();
+
+    public Customer(){}
 
 //    @ElementCollection(fetch = FetchType.LAZY)
 //    private Set<String> strings = new HashSet<>();
@@ -95,6 +108,14 @@ public class Customer {
 //            cascade=CascadeType.ALL)
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 
     @Override
